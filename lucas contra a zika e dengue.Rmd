@@ -1,0 +1,40 @@
+---
+title: "Lucas contra zika e dengue"
+author: "Lucas S. A. Pessoa"
+date: "2023-08-18"
+output: html_document
+---
+# Aula 4
+Importando a primeira base de dados 
+```{r}
+Amor <- read.csv("base microcefalia.csv", fileEncoding = "utf8")
+#Exibindo os nomes das variaveis
+names(Amor)
+#exibir as primeiras dez linhas seguidas das dez ultimas linhas
+head(Amor, 10)
+tail(Amor, 10)
+```
+Instalando nosso primeiro pacote 
+```{r}
+#install.packages("dplyr")
+#para ativar pacote
+library(dplyr)
+glimpse(Amor)
+
+```
+Mudar a coluna de criancas com microcefalia para numerica  e exiba o total de criancas com microcefalia no rio de janeiro de 2016 
+```{r echo=FALSE, message=FALSE}
+
+#install.packages("stringr")
+library(stringr)
+Amor$Criança.com.microcef.e.ou.altera.SNC....28.dias. <- str_replace_all(Amor$Criança.com.microcef.e.ou.altera.SNC....28.dias., "-", "0")
+
+
+#excluir a ultima linha 
+Amor <- Amor[-93,]
+
+ #finalmente mudando  para numerico
+ Amor$Criança.com.microcef.e.ou.altera.SNC....28.dias. <- as.numeric(Amor$Criança.com.microcef.e.ou.altera.SNC....28.dias.)
+ #somando os valores 
+ sum(Amor$Criança.com.microcef.e.ou.altera.SNC....28.dias.)
+```

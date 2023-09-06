@@ -1,0 +1,28 @@
+---
+title: amor
+author: "Lucas S. A. Pessoa"
+date: "2023-08-16"
+output: html_document
+---
+
+ programador do santo amaro <br>
+mais um dia na vida do lidar comunitario 
+
+```{r}
+angelica <- 100-88
+ ellen <- angelica/2
+```
+
+
+```{r}
+#Problema logico: para comecar a residencia precisamos de pelo menos 6 computadores sendo que 1 computador leva pelo menos 12 horas para ficar pronto para ficar disponivel no data lab. Se a gente comecou a preparar os computadores a gente teria disponivel ate o inicio da proxima aula?\leva em considerancao que a ultima aula acabou as 17:30 do dia 09/08 e a proxima aula se iniciaria as 15:00 do dia 11/08
+ 
+
+dia1 <- 24-17.5
+dia2 <- 24
+dia3 <- 24-15
+resultado <- dia1+dia2+dia3
+resultado 
+resultado/12
+
+```

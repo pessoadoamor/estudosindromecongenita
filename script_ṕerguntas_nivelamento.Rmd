@@ -1,0 +1,75 @@
+---
+title: "aula nivelamento"
+author: "poli"
+date: '2023-08-29'
+output: html_document
+---
+
+# Aula de nivelamento
+
+Todos os scripts estão salvos e disponíveis pra consulta. 
+
+## Exercício 1
+
+Carregue as bibliotecas "dplyr" e "stringr", logo após direcione para a pasta de trabalho:
+```{r echo=FALSE, message=FALSE}
+library(dplyr)
+library(stringr)
+setwd("~/Área de Trabalho")
+```
+
+Importe a base de dados (da síndrome congênita), depois visualize as 10 primeiras e últimas linhas e utilize uma função de resumo para ter uma noção de toda a base de dados.
+Elimine a última linha da base de dados.
+```{r}
+
+amor<- read.csv("base microcefalia.csv")
+head(amor,10)
+tail(amor,10)
+summary(amor)
+amor<-amor[-93,]
+```
+
+**Pergunta 1**
+Quantas variáveis temos do tipo numérica e qual?
+
+
+## Exercício 2
+
+Calcule a quantidade de mães da raça cor branca e depois da raça cor negra (não leve em consideração para o exercício as de raça cor parda)
+```{r echo=FALSE, message=FALSE}
+sum(as.numeric(amor$Raca_Mae_Branca), na.rm = T)
+sum(as.numeric(amor$Raca_Mae_Negra), na.rm = T)
+```
+
+
+```{r}
+
+```
+A base conta com 205 mães brancas e 84 mães negras
+
+## Exercício 3
+
+Troque os hífens por zero, mude para o formato numérico e repita a soma. 
+```{r}
+#mães brancas
+amor$Raca_Mae_Branca<- str_replace_all(amor$Raca_Mae_Branca, "-", "0")
+amor$Raca_Mae_Negra<- str_replace_all(amor$Raca_Mae_Negra, "-", "0")
+
+
+```
+
+
+Realize as duas somas em um mesmo script e nomeie os títulos das colunas das somas para "total_mães_brancas" e "total_mães_negras" respectivamente
+```{r}
+amor %>% summarise(total_mães_brancas=sum(as.numeric(Raca_Mae_Branca, na.rm = T)), total_mães_negras=sum(as.numeric(Raca_Mae_Negra)
+                   
+```
+
+Retire todos os hífens da tabela por zero e depois transformar as colunas que são numéricas pra formato numérico (da coluna 3 até a 67)
+```{r}
+amor [amor == "-"] <- "0"
+amor <- amor %>% mutate_at(c(3:67), as.numeric)
+```
+
+
+
